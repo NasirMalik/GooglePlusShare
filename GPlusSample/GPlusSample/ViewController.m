@@ -15,7 +15,8 @@
 #import <GoogleOpenSource/GoogleOpenSource.h>
 #import <GooglePlus/GooglePlus.h>
 
-#define CLIEND_ID @"xxxxxxxxxxxxxx" //add your Google Plus ClientID here
+#define CLIEND_ID @"98223363200-tteph5459h1qve2js1o3vb4jqeegcghg.apps.googleusercontent.com" //add your Google Plus ClientID here
+#define GOOGLE_PLUS_CLIEND_ID @"440607175691-4bhfdefg7sbkrrjk3mp9t5dc15upiet0.apps.googleusercontent.com"
 
 static NSString * const kClientId = CLIEND_ID;
 
@@ -31,7 +32,7 @@ static NSString * const kClientId = CLIEND_ID;
 	// Do any additional setup after loading the view, typically from a nib.
     GPPSignIn *signIn = [GPPSignIn sharedInstance];
     signIn.shouldFetchGooglePlusUser = YES;
-    //signIn.shouldFetchGooleUserEmail = YES;  // Uncomment to get the user's email
+    signIn.shouldFetchGoogleUserEmail = YES;  // Uncomment to get the user's email
     
     // You previously set kClientId in the "Initialize the Google+ client" step
     signIn.clientID = kClientId;
@@ -71,6 +72,7 @@ static NSString * const kClientId = CLIEND_ID;
     if (error) {
         // Do some error handling here.
     } else {
+        NSLog(@"%@ %@",[GPPSignIn sharedInstance].userEmail, [GPPSignIn sharedInstance].userID);
         [self refreshInterfaceBasedOnSignIn];
     }
 }
